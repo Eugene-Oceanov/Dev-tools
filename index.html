@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Developer tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.9/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="d-flex">
+
+    <nav class="nav d-flex fd-column jc-between">
+        <div class="menu">
+            <h1 class="nav__title">tools</h1>
+            <p class="nav__kanban nav__item">trello</p>
+            <p class="nav__library nav__item">My library</p>
+            <p class="nav__stopwatch nav__item">stopwatch</p>
+        </div>
+        <div class="menu-tools">
+            <div class="menu-calculator">
+                <div class="calc-screen d-flex ai-center">0</div>
+                <div class="calc-keyboard">
+                    <div class="button-row d-flex jc-between">
+                        <button class="calc-button clear">C</button>
+                        <button class="calc-button delete">&#8592;</button>
+                        <button class="calc-button root">&#8730;</button>
+                        <button class="calc-button divide">/</button>
+                    </div>
+                    <div class="button-row d-flex jc-between">
+                        <button class="calc-button seven">7</button>
+                        <button class="calc-button eight">8</button>
+                        <button class="calc-button nine">9</button>
+                        <button class="calc-button multiplic">*</button>
+                    </div>
+                    <div class="button-row d-flex jc-between">
+                        <button class="calc-button four">4</button>
+                        <button class="calc-button five">5</button>
+                        <button class="calc-button six">6</button>
+                        <button class="calc-button minus">-</button>
+                    </div>
+                    <div class="button-row d-flex jc-between">
+                        <button class="calc-button one">1</button>
+                        <button class="calc-button two">2</button>
+                        <button class="calc-button three">3</button>
+                        <button class="calc-button plus">+</button>
+                    </div>
+                    <div class="button-row d-flex jc-between">
+                        <button class="calc-button dot">.</button>
+                        <button class="calc-button zero">0</button>
+                        <button class="calc-button equals">=</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-date d-flex jc-between">
+                <p class="date"></p>
+                <p class="time"></p>
+            </div>
+        </div>
+    </nav>
+
+    <section class="kanban__section standart-section d-flex fd-column jc-between">
+        <div class="kanban__workspace">
+            <button class="add-board__btn">+</button>
+            <h1 class="title" contenteditable="true">Назовите пространство</h1>
+            <div class="boards d-flex">
+                <div class="boards__item">
+                    <div contenteditable="true" class="board-title">Введите название</div>
+                    <div class="list">
+                        <div class="list-item" draggable="true">Карточка 1</div>
+                    </div>
+                    <div class="form">
+                        <textarea placeholder="Введите название карточки" class="form__textarea"></textarea>
+                        <div class="form__buttons d-flex jc-between">
+                            <button class="add-card__btn standart-button">Добавить карточку</button>
+                            <button class="cancel__btn standart-button">Отмена</button>
+                        </div>
+
+                    </div>
+                    <button class="open-form__btn standart-button">Добавить карточку</button>
+                </div>
+            </div>
+        </div>
+        <div class="kanban__panel">
+            <button class="save-space__btn standart-button">Сохранить пространство</button>
+            <button class="del-space__btn standart-button">Очистить пространство</button>
+        </div>
+    </section>
+
+
+    <section class="library__section standart-section">
+        <div class="library__panel standart-block">
+            <input type="text" class="func-title standart-input" placeholder="function title">
+            <textarea class="func-body standart-textarea" placeholder="function body"></textarea>
+            <button class="standart-button func-save">save</button>
+        </div>
+        <div class="library__storage standart-storage">
+            <details class="storage-item">
+                <summary>
+                    <h1>Random integer (JS)</h1><img src="img/arrow.png" alt="arrow">
+                </summary>
+                <pre><code contenteditable="true">
+function randomInteger(min, max) {
+    let rand = min - 0.5 + Math.random() * (max - min + 1);
+    return Math.round(rand);
+}
+                </code></pre>
+            </details>
+        </div>
+    </section>
+
+    <section class="stopwatch__section standart-section">
+        <div class="stopwatch__block standart-block">
+            <p class="stopwatch__timer"></p>
+            <input type="text" id="timepoint-topic" class="standart-input" placeholder="Lesson topic">
+            <textarea name="timepoint" id="timepoint-description" class="standart-textarea"
+                placeholder="Questions"></textarea>
+            <div class="stopwatch-panel">
+                <button class="standart-button start">start</button>
+                <button class="standart-button pause">pause</button>
+                <button class="standart-button stop">stop</button>
+                <button class="standart-button save">save</button>
+            </div>
+        </div>
+        <div class="stopwatch__storage standart-storage"></div>
+    </section>
+
+
+    <script src="js/main.js"></script>
+    <script src="js/library.js"></script>
+    <script src="js/stopwatch.js"></script>
+    <script src="js/kanban.js"></script>
+
+</body>
+
+</html>
