@@ -266,7 +266,7 @@ textarea {
   color: #888;
   border: 2px solid #888;
 }
-.kanban__workspace .title {
+.kanban__workspace .workspace-title {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -278,7 +278,7 @@ textarea {
   color: #888;
   margin-bottom: 10px;
 }
-.kanban__workspace .title:focus {
+.kanban__workspace .workspace-title:focus {
   background: #777;
   border: none;
   outline: none;
@@ -286,6 +286,7 @@ textarea {
 }
 .kanban__workspace .boards {
   flex-wrap: wrap;
+  height: 75%;
 }
 .kanban__workspace .boards .boards__item {
   width: 250px;
@@ -378,6 +379,9 @@ textarea {
 .kanban__panel {
   margin: 0 auto;
   margin-top: 10px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .kanban__panel button {
   width: 200px;

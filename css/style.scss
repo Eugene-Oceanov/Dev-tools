@@ -302,7 +302,7 @@ textarea {
             }
         }
 
-        .title {
+        .workspace-title {
             width: fit-content;
             max-width: 95%;
             text-align: end;
@@ -322,6 +322,7 @@ textarea {
 
         .boards {
             flex-wrap: wrap;
+            height: 75%;
 
             .boards__item {
                 width: 250px;
@@ -429,6 +430,7 @@ textarea {
     &__panel {
         margin: 0 auto;
         margin-top: 10px;
+        height: fit-content;
 
         button {
             width: 200px;

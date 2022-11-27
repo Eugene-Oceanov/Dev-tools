@@ -1,11 +1,13 @@
 function calcHeight() {
-    document.querySelector(".boards").style.maxHeight = document.querySelector(".kanban__section").clientHeight - document.querySelector(".kanban__workspace .title").clientHeight - document.querySelector(".kanban__panel").clientHeight - 60 + "px";
+    document.querySelector(".boards").style.height = document.querySelector(".kanban__section").clientHeight - document.querySelector(".workspace-title").clientHeight - document.querySelector(".kanban__panel").clientHeight - 60 + "px";
 }
 calcHeight();
 
-// if (localStorage.getItem("workspace")) {
-//     document.querySelector(".kanban__section").append(JSON.parse(localStorage.getItem("workspace")));
-// }
+
+
+if (localStorage.getItem("workspace")) {
+    document.querySelector(".kanban__workspace").innerHTML = localStorage.getItem("workspace");
+}
 
 function addCard() {
     const openFormBtn = document.querySelector(".open-form__btn");
@@ -40,8 +42,9 @@ function addCard() {
         list.append(listItem);
         textarea.value = "";
         addCardBtn.style.display = "none";
-        delCard();
         dragNdrop();
+        delCard();
+        saveSpace();
     })
 }
 addCard();
@@ -53,6 +56,8 @@ function delCard() {
             this.remove();
         })
     })
+    saveSpace();
+
 }
 delCard();
 
@@ -82,6 +87,7 @@ function delBoard() {
         })
     })
 }
+delBoard();
 
 let dragItem;
 
@@ -119,16 +125,47 @@ function dragNdrop() {
             })
         })
     })
+    saveSpace();
 }
 dragNdrop();
 
-// function saveSpace() {
-//     const saveSpaceBtn = document.querySelector(".save-space__btn");
-//     const ws = document.querySelector(".kanban__workspace");
-//     saveSpaceBtn.addEventListener("click", () => {
-//         localStorage.setItem("workspace", JSON.stringify(ws));
-//         console.log(ws);
-//     })
-// }
+function saveSpace() {
+    let ws = document.querySelector(".kanban__workspace").innerHTML;
+    const saveSpaceBtn = document.querySelector(".save-space__btn");
+    saveSpaceBtn.addEventListener("click", () => {
+        localStorage.setItem("workspace", ws);
+        console.log(ws);
+    })
+}
+saveSpace();
 
-// saveSpace()
+function clearSpace() {
+    const clearSpaceBtn = document.querySelector(".del-space__btn");
+    clearSpaceBtn.addEventListener("click", () => {
+        if (localStorage.getItem("workspace")) {
+            localStorage.removeItem("workspace");
+        }
+        document.querySelector(".kanban__workspace").innerHTML = `<button class="add-board__btn">+</button>
+        <h1 class="workspace-title" contenteditable="true">Назовите пространство</h1>
+        <div class="boards d-flex">
+            <div class="boards__item">
+                <div contenteditable="true" class="board-title">Введите название</div>
+                <div class="list">
+                    <div class="list-item" draggable="true">Карточка 1</div>
+                </div>
+                <div class="form">
+                    <textarea placeholder="Введите название карточки" class="form__textarea"></textarea>
+                    <div class="form__buttons d-flex jc-between">
+                        <button class="add-card__btn standart-button">Добавить карточку</button>
+                        <button class="cancel__btn standart-button">Отмена</button>
+                    </div>
+
+                </div>
+                <button class="open-form__btn standart-button">Добавить карточку</button>
+            </div>
+        </div>`
+        addBoard();
+        addCard();
+    })
+}
+clearSpace();
